@@ -1,0 +1,6 @@
+openai
+streamlit
+promptlayer
+docx2txt
+numpy
+pandas
