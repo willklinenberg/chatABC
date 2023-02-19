@@ -4,6 +4,7 @@ import docx2txt
 import numpy as np
 import pandas as pd
 import promptlayer
+#import Notes_config
 
 
 promptlayer.api_key = st.secrets["promptlayer_api"]
@@ -69,7 +70,7 @@ if file:
     # Do something fun 🚀
     diet = openai.Completion.create(
     engine="text-davinci-003", 
-    prompt=str(inst) + '\n Please create a list of dietary reccomendations based on the instructions paper above' + lang_text, 
+    prompt=str(inst) + '\n Please create a list of three dietary reccomendations based on the instructions paper above' + lang_text, 
     pl_tags=["name-guessing", "pipeline-2"],
     max_tokens=500
     )
@@ -82,13 +83,13 @@ if file:
     st.title('\n \n Calendar: \n')
 
     st.date_input('Select Date')
-    d = {'Morning': ['Take 500 mg Metformin', '30 Min Exercise', ''], 'Evening': ['Take 500 mg Metformin', 'Take 10 mg Lisinopril', 'Take 15 mg Lipitor']}
+    d = {'Morning': ['Take 500 mg Metformin', '30 Min Exercise', '', ''], 'Evening': ['Take 500 mg Metformin', 'Take 10 mg Lisinopril', 'Take 20 mg Lipitor', 'Use CPAP Machine']}
     df = pd.DataFrame(d)
     st.write(df)
 
     st.title('Chat:')
 
-    chat = st.text_input('Chat with Me!')
+    chat = st.text_input('Ask me about your treatment plan!')
 
 
 
@@ -104,4 +105,6 @@ if file:
         st.write('Answer: \n' + summary.choices[0].text)
     
     
+
+
 
